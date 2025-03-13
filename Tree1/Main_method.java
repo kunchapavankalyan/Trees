@@ -46,8 +46,20 @@ public class Main_method
         System.out.println("the maximum path is : "+max.get());
         System.out.println("Root to Path values "+Binary_tree_traversal.Path_print(root, new ArrayList<ArrayList<Integer>>(), new ArrayList<>()));
         System.out.println("the max path of the tree is "+Binary_tree_traversal.Max_path(root, 0, new AtomicInteger(Integer.MIN_VALUE)));
-        Binary_tree_traversal.Ancestor_node(root, 7);;
+        Binary_tree_traversal.Ancestor_node(root, 7);
 
+        /*********************************************************Binary Tree *****************************************************/
+        int[] arr = {8, 3, 10, 1, 6, 14, 4, 7, 13};
+
+        System.out.println("This is a tree:");
+        TreeNode normalTree = Binary_Search_Tree.Create_tree(arr);
+        Binary_tree_traversal.inorder(normalTree);
+
+        System.out.println("\nThis is a binary search tree:");
+        TreeNode binaryTree = Binary_Search_Tree.Create_Binary_tree(arr);
+        Binary_tree_traversal.inorder(binaryTree);
+
+        System.out.println("\n Searching an element "+Binary_Search_Tree.Search_Node(binaryTree,8));
     }
     
 }
