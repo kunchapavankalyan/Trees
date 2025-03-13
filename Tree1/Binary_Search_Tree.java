@@ -7,6 +7,7 @@ public class Binary_Search_Tree
 {
   // 1. creating a normal tree
   // 2. creating a binary tree
+  // 3. deletion of node in a binary tree
   //************************************************************************************* */
   //creating a normal tree
     public static TreeNode Create_tree(int[] arr)
@@ -87,4 +88,56 @@ public class Binary_Search_Tree
     return Search_Node(root.right, target);
     }
   }
+  //************************************************************************************* */
+  //Deletion of a node in a binary treee
+  //there is 3 types of conditons we need to take care 
+  //1. delete a leaf node
+  //2. delete a single parent node
+  //3. delete a parent node with 2 childs
+  public static TreeNode delete(TreeNode root, int target)
+  {
+    if(root==null)
+    {
+      return null;
+    }
+    if(root.data<target)
+    {
+      root.left=delete(root.left, target);
+    }
+    else if(root.data>target)
+    {
+      root.right=delete(root.right, target);
+    }
+    else
+    {
+      //case 1 :leaf node
+      if(root.left==null && root.right==null)
+      {
+        return null;
+      }
+      //case 2:target node with one child
+      if(root.left==null)
+      {
+        return root.right;
+      }
+      if(root.right==null)
+      {
+        return root.left;
+      }
+      //case 3:target node with two childs
+      //find the min element in the right sub tree
+      TreeNode min=min_helper(root.right);
+      root.data=min.data;
+      root.right=delete(root.right, min.data);
+    }
+    return root;
+  }
+  private static TreeNode min_helper(TreeNode root)
+    {
+      while(root.left!=null)
+      {
+        root=root.left;
+      }
+      return root;
+    }
 }

@@ -60,6 +60,11 @@ public class Main_method
         Binary_tree_traversal.inorder(binaryTree);
 
         System.out.println("\n Searching an element "+Binary_Search_Tree.Search_Node(binaryTree,8));
+
+        System.out.println("\n delete node");
+        Binary_Search_Tree.delete(binaryTree, 8);
+        System.out.println("\n Searching an element "+Binary_Search_Tree.Search_Node(binaryTree,8));
+
     }
     
 }
