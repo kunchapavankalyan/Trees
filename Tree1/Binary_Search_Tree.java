@@ -8,6 +8,8 @@ public class Binary_Search_Tree
   // 1. creating a normal tree
   // 2. creating a binary tree
   // 3. deletion of node in a binary tree
+  // 4. Insert node into binary tree
+  // 5. validate binary tree
   //************************************************************************************* */
   //creating a normal tree
     public static TreeNode Create_tree(int[] arr)
@@ -140,4 +142,41 @@ public class Binary_Search_Tree
       }
       return root;
     }
+  //************************************************************************* 
+  //insert into binary tree
+  public static TreeNode insert_node(TreeNode root,int ins)
+  {
+    if(root==null)
+    {
+      return new TreeNode(ins);
+    }
+    if(root.data<ins) 
+    {
+       root.right=insert_node(root.right, ins);
+    }
+    else
+    {
+       root.left=insert_node(root.left, ins);
+    }
+    return root;
+  }
+  //***************************************************************** 
+  //validate the binary 
+  public static boolean isValidBST(TreeNode root) 
+  {
+    return Binary_Search_Tree_validation(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+  }
+  public static boolean Binary_Search_Tree_validation(TreeNode root,int min,int max)
+  {
+    if(root==null)
+    {
+      return true;
+    }
+    if (root.data <= min || root.data >= max) 
+    {
+      return false;
+    }
+    
+    return Binary_Search_Tree_validation(root.left,min,root.data) && Binary_Search_Tree_validation(root.right,root.data,max);
+  }
 }
